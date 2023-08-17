@@ -16,7 +16,7 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import { LocationOn } from "@mui/icons-material";
 // import {Card2} from "../../components/Card/Card2";
 
-export default function api({ detail, post1 }, props) {
+export default function Production({ detail, post1 }, props) {
   return (
     <Stack alignItems="center" height="100%">
       <Grid container display="flex" spacing={4} mt={4}>
@@ -53,7 +53,7 @@ export default function api({ detail, post1 }, props) {
       </Grid>
       {/* -------------------- */}
       <Grid container display="flex" spacing={2} mt={4}>
-        {post1.map((element, i) => {
+        {post1?.map((element, i) => {
           return (
             <Grid item lg={3} key={i} alignItems="normal" height="100%">
               <Card
