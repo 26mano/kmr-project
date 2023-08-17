@@ -1,10 +1,8 @@
 import React from 'react'
 import { Box, Card, CardContent, CardHeader, CardMedia, Grid, Stack, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export default function api({ detail, post1 }, props) {
-   const router = useRouter();
   return (
     <Stack alignItems="center" height="100vh" >
       <Grid container display="flex" spacing={4} mt={4} >
