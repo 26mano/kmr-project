@@ -3,6 +3,7 @@ import { Box, Card, CardContent, CardHeader, CardMedia, Grid, Stack, Typography 
 import Link from 'next/link';
 
 export default function api({ detail, post1 }, props) {
+
   return (
     <Stack alignItems="center" height="100vh" >
       <Grid container display="flex" spacing={4} mt={4} >
@@ -30,7 +31,7 @@ export default function api({ detail, post1 }, props) {
          image={e.thumbnail}
          />
         <CardContent >
-          <Link href={`/products/${e.brand?.split(" ")?.[0]}`} >
+          <Link href={`/products/${e.brand}`} >
           <Box display="flex" justifyContent="space-between" >
           <Typography> Brand : {e.brand}</Typography>
           <Typography> Price : {e.price} dollar</Typography>
