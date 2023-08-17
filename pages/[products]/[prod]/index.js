@@ -1,4 +1,5 @@
 import { Avatar, Box, Card, CardContent, CardHeader, CardMedia, Grid, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import React, { useState } from "react";
 
 function Product({ detail }) {
@@ -15,7 +16,7 @@ function Product({ detail }) {
                   <CardHeader
                     avatar={
                         <Avatar sx={{ width:'50px', height:"50px" }} >
-                            <img  src={e.logo} width={50} />
+                            <Image  src={e.logo} width={50} height={50} />
                         </Avatar> }
                     title={
                       <Box display="flex" >

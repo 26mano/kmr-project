@@ -11,10 +11,10 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import Card2 from "../../components/Card/Card2";
-import { useRouter } from "next/router";
+
 
 export default function api({ detail, post1 }, props) {
-  const router = useRouter();
+
   return (
     <Stack alignItems="center" height="100%">
       <Grid container display="flex" spacing={4} mt={4}>
@@ -66,7 +66,7 @@ export default function api({ detail, post1 }, props) {
                 Rating={element.rating}
                 Kms={element.dmr}
                 sx={{ width: 280 }}
-                href={`/${router.query.products}/${element.id}-${element.institute_name?.replace(/[ ]/g,"-")}`}
+                href={`/colleges/${element.id}-${element.institute_name?.replace(/[ ]/g,"-")}`}
               />
             </Grid>
           );
