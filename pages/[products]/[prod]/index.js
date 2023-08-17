@@ -1,33 +1,35 @@
-import { Box, Card, CardContent, CardHeader, CardMedia, Grid, Stack, Typography } from "@mui/material";
-import React from "react";
+import { Avatar, Box, Card, CardContent, CardHeader, CardMedia, Grid, Stack, Typography } from "@mui/material";
+import React, { useState } from "react";
 
 function Product({ detail }) {
+    const [jsonData , setJsonData] = useState([detail?.[0]]);
+    console.log(detail);
   return (
     <Stack>
       <Grid container display="flex" spacing={4} >
-        {detail.map((e) => {
+        {jsonData.map((e) => {
           return (
             <>
               <Grid item lg={3}>
                 <Card>
                   <CardHeader
+                    avatar={
+                        <Avatar sx={{ width:'50px', height:"50px" }} >
+                            <img  src={e.logo} width={50} />
+                        </Avatar> }
                     title={
-                      <Box display="flex" justifyContent="space-between">
-                        <Typography variant="subtitle1">{e.title}</Typography>
-                        <Typography>{e.rating}/5</Typography>
+                      <Box display="flex" >
+                        <Typography variant="subtitle1">{e.institute_name}</Typography>
+                        {/* <Typography>{e.collegecode}</Typography> */}
                       </Box>
                     }
-                    subheader={
-                      <>
-                        <Typography variant="body1">{e.description}</Typography>
-                      </>
-                    }
+                   
                   />
-                  <CardMedia component="img" height="155" image={e.thumbnail} />
+                  <CardMedia component="img" height="155" image={e.featured_image} />
                   <CardContent>
                     <Box display="flex" justifyContent="space-between">
-                      <Typography> Brand : {e.brand}</Typography>
-                      <Typography> Price : {e.price} dollar</Typography>
+                      <Typography> Brand : {e.affliation}</Typography>
+                      {/* <Typography> Price : {e.price} dollar</Typography> */}
                     </Box>
                   </CardContent>
                 </Card>
@@ -44,9 +46,9 @@ export default Product;
 
 export const getServerSideProps = async (context) => {
   const name = await context.query.prod;
-  let get = await fetch(`https://dummyjson.com/products/search?q=${name}`);
+  let get = await fetch(`https://w.kalvimalar.com/collegedetails?collegeId=${name}`);
   let res = await get.json();
-  let detail = res.products;
+  let detail = res.data || null;
   return {
     props: { detail },
   };
