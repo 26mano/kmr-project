@@ -135,7 +135,7 @@ export default function Production({ post1 }, props) {
 }
 
 export const getServerSideProps = async () => {
-  let post = await fetch(`https://w.kalvimalar.com/colleges?streamId=${3}` , { method:"GET" } );
+  let post = await fetch(`https://api-staging.kalvimalar.com/colleges` , { method:"GET" } );
   let res1 = await post.json();
   let post1 = res1.data;
   return {
