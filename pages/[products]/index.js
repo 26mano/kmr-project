@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardMedia,
   Grid,
+  Link,
   Stack,
   Typography,
 } from "@mui/material";
@@ -42,7 +43,7 @@ export default function Production({ post1 }, props) {
                   />
                 </Box> */}
 
-                {/* <CardHeader
+                <CardHeader
                   sx={{ display: "flex" }}
 
                   title={
@@ -54,7 +55,7 @@ export default function Production({ post1 }, props) {
                         position: "relative",
                       }}
                     >
-                      <StarRateIcon
+                      {/* <StarRateIcon
                         sx={{
                           bgcolor: "grey.200",
                           // bgcolor:themeMode === true ? "grey.800":'goldenrod',
@@ -71,7 +72,7 @@ export default function Production({ post1 }, props) {
                           p: "4px",
                           // color: "#F0A500"
                         }}
-                      />
+                      /> */}
                       <Typography
                         variant="body1"
                         sx={{
@@ -87,10 +88,10 @@ export default function Production({ post1 }, props) {
                       </Typography>
                     </Box>
                   }
-                /> */}
+                />
 
-                 <Typography variant="h6" > {element.name} </Typography>
-                {/* <CardContent
+                 {/* <Typography variant="h6" > {element.name} </Typography> */}
+                <CardContent
                   sx={{ mt: -1, display: "grid", justifyContent: "left" }}
                 >
                   {
@@ -112,18 +113,18 @@ export default function Production({ post1 }, props) {
                         sx={{ display: "flex", color: "grey.600" }}
                         gutterBottom
                       >
-                        <LocationOn
+                        {/* <LocationOn
                           sx={{
                             fontSize: "14px",
                             pr: "2px",
                             color: "grey.600",
                           }}
-                        />
+                        /> */}
                         {element.district_name},{element.state_name}
                       </Typography>
                     </>
                   }
-                </CardContent> */}
+                </CardContent>
               </Card>
             </Grid>
           );
@@ -134,9 +135,9 @@ export default function Production({ post1 }, props) {
 }
 
 export const getServerSideProps = async () => {
-  let post = await fetch(`https://w.kalvimalar.com/streams`);
+  let post = await fetch(`https://w.kalvimalar.com/colleges?streamId=${3}` , { method:"GET" } );
   let res1 = await post.json();
-  let post1 = res1;
+  let post1 = res1.data;
   return {
     props: { post1 },
   };
