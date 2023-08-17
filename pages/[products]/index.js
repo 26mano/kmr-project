@@ -68,32 +68,18 @@ export default function Production({ detail, post1 }, props) {
                 }}
                 // onClick={onClick}
               >
-                <Box>
+                {/* <Box>
                   <CardMedia
                     component="img"
                     height="150"
                     image={`${element.featured_image}`}
                     alt={element.institute_name}
                   />
-                </Box>
+                </Box> */}
 
-                <CardHeader
+                {/* <CardHeader
                   sx={{ display: "flex" }}
-                  avatar={
-                    <Avatar
-                      sx={{
-                        width: 60,
-                        height: 60,
-                        mt: -8,
-                        borderRadius: "50px",
-                        boxShadow: "1px 1px 1px 1px grey",
-                      }}
-                      // imgProps={`https://w.kalvimalar.com/images/${CollegeLogo}`}
-                    >
-                      {/* <img src={`https://w.kalvimalar.com/images/${CollegeLogo}`} /> */}
-                      <Image src={`${element.logo}`} width={55} height={55} />
-                    </Avatar>
-                  }
+
                   title={
                     <Box
                       sx={{
@@ -132,12 +118,14 @@ export default function Production({ detail, post1 }, props) {
                           pl: 2,
                         }}
                       >
-                        {(element.rating / 5).toString().slice(0, 3)}
+                        {(element.name)}
                       </Typography>
                     </Box>
                   }
-                />
-                <CardContent
+                /> */}
+
+                 <Typography variant="h6" > {element.name} </Typography>
+                {/* <CardContent
                   sx={{ mt: -1, display: "grid", justifyContent: "left" }}
                 >
                   {
@@ -170,7 +158,7 @@ export default function Production({ detail, post1 }, props) {
                       </Typography>
                     </>
                   }
-                </CardContent>
+                </CardContent> */}
               </Card>
             </Grid>
           );
@@ -182,11 +170,11 @@ export default function Production({ detail, post1 }, props) {
 
 export const getServerSideProps = async () => {
   let get = await fetch(`https://dummyjson.com/products`);
-  let post = await fetch(`https://w.kalvimalar.com/colleges`);
+  let post = await fetch(`https://w.kalvimalar.com/streams`);
   let res = await get.json();
   let res1 = await post.json();
   let detail = res.products;
-  let post1 = res1.data;
+  let post1 = res1;
   return {
     props: { detail, post1 },
   };
