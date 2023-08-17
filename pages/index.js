@@ -12,11 +12,11 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import StarRateIcon from "@mui/icons-material/StarRate";
+import { StarRate as StarRateIcon} from "@mui/icons-material";
 import { LocationOn } from "@mui/icons-material";
 // import {Card2} from "../../components/Card/Card2";
 
-export default function api({ detail, post1 }, props) {
+export default function index({ detail, post1 }, props) {
   return (
     <Stack alignItems="center" height="100%">
       <Grid container display="flex" spacing={4} mt={4}>
@@ -53,7 +53,7 @@ export default function api({ detail, post1 }, props) {
       </Grid>
       {/* -------------------- */}
       <Grid container display="flex" spacing={2} mt={4}>
-        {post1.map((element, i) => {
+        {post1?.map((element, i) => {
           return (
             <Grid item lg={3} key={i} alignItems="normal" height="100%">
               <Card
@@ -66,17 +66,14 @@ export default function api({ detail, post1 }, props) {
                   borderRadius: "13px",
                   alignItems: "normal",
                 }}
-                // onClick={onClick}
+                
               >
-                <Box>
                   <CardMedia
                     component="img"
                     height="150"
                     image={`${element.featured_image}`}
                     alt={element.institute_name}
                   />
-                </Box>
-
                 <CardHeader
                   sx={{ display: "flex" }}
                   avatar={
@@ -180,7 +177,7 @@ export default function api({ detail, post1 }, props) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
   let get = await fetch(`https://dummyjson.com/products`);
   let post = await fetch(`https://w.kalvimalar.com/colleges`);
   let res = await get.json();
