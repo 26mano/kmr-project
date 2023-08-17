@@ -45,22 +45,10 @@ export default function api({ detail, post1 }, props) {
         return(
       <Grid item lg={3 } key={i} >
       <Card>
-        <CardHeader
-          title={
-            <Box display="flex" justifyContent='space-between' >
-            <Typography variant="subtitle1" >{e.title}</Typography>
-            <Typography>{e.rating}/5</Typography>
-            </Box>
-          }
-         />
-         {/* <CardMedia 
-         component="img"
-         height="155"
-         image={e.thumbnail}
-         /> */}
+       
         <CardContent >
-          <Box display="flex" justifyContent="space-between" >
-          <Typography> Brand : {e.body}</Typography>
+          <Box display="flex" justifyContent="center" >
+          <Typography> {e.name}</Typography>
           {/* <Typography> Price : {e.price} dollar</Typography> */}
           </Box>
          
@@ -79,11 +67,11 @@ export default function api({ detail, post1 }, props) {
 
 export const getServerSideProps = async () => {
     let get = await fetch (`https://dummyjson.com/products`);
-    let post = await fetch (`https://dummyjson.com/posts`);
+    let post = await fetch (`https://w.kalvimalar.com/streams`);
     let res = await get.json();
     let res1 = await post.json();
     let detail = res.products;
-    let post1 = res1.posts;
+    let post1 = res1;
     return {
       props : {detail , post1}
     }
